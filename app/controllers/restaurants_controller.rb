@@ -13,10 +13,21 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(params[:restaurant])
+    @restaurant = Restaurant.new(restaurant_params)
+    # params[:restaurant]
     @restaurant.save
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
     # Will raise ActiveModel::ForbiddenAttributesError
-    redirect_to(@restaurant.id)
+  end
+
+  private
+
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :address, :category)
   end
 end
 
