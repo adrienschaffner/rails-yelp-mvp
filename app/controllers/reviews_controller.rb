@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+
+  def commentary
+    @reviews = Review.find(params[:restaurant_id])
+  end
+
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new

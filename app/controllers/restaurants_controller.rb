@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+
   def show
     @restaurant = Restaurant.find(params[:id])
   end
@@ -23,6 +24,8 @@ class RestaurantsController < ApplicationController
     end
     # Will raise ActiveModel::ForbiddenAttributesError
   end
+
+
 
   private
 
